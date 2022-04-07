@@ -1,5 +1,4 @@
 import urllib.request, json, time
-import pandas as pd
 
 # rotas do servico de noticias
 URL_SERVICO = "http://172.22.0.2:5000/"
@@ -35,9 +34,10 @@ def get_sistemas():
 
     return noticias
 
-def imprimir_noticias(noticias):
-    frame = pd.DataFrame(noticias)
-    print(frame.T)
+def imprimir(tipo_noticias, noticias):
+    print(f"****** Últimas notícias sobre {tipo_noticias} *******")
+    for noticia in noticias:
+        print(f"data: {noticia['data']}. Notícia: {noticia['titulo']}")
 
 if __name__ == "__main__":
     while True:
